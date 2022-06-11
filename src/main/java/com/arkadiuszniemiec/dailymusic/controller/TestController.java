@@ -16,7 +16,6 @@ public class TestController {
 	@Autowired
 	MusicDAOImpl musicDAOImpl;
 	
-	//@Autowired
 	
 	
 	@GetMapping("/test")
