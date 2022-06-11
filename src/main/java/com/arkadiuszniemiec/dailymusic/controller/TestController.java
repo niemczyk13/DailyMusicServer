@@ -20,7 +20,7 @@ public class TestController {
 	
 	
 	@GetMapping("/test")
-	public List<Music> test() {
-		return musicDAOImpl.list();
+	public int test() {
+		return musicDAOImpl.list().size();
 	}
 }
