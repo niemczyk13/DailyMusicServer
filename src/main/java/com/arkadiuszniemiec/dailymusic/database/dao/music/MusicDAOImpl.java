@@ -20,7 +20,7 @@ public class MusicDAOImpl implements MusicDAO {
 
 	@Override
 	public Music get(long id) {
-		return repository.getById(id);
+		return repository.getReferenceById(id);
 	}
 
 	@Override
