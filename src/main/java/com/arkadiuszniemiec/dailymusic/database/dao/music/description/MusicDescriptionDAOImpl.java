@@ -15,19 +15,19 @@ public class MusicDescriptionDAOImpl implements MusicDescriptionDAO {
 
 	@Override
 	public List<MusicDescription> list() {
-		// TODO Auto-generated method stub
-		return null;
+		return repository.findAll();
 	}
 
 	@Override
 	public MusicDescription get(long id) {
 		// TODO Auto-generated method stub
-		return null;
+		return repository.getReferenceById(id);
 	}
 
 	@Override
 	public long save(MusicDescription data) {
 		return repository.save(data).getId();
+//		return 0L;
 	}
 
 	@Override

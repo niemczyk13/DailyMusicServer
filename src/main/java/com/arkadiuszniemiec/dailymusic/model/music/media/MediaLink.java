@@ -1,20 +1,24 @@
 package com.arkadiuszniemiec.dailymusic.model.music.media;
 
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
-import org.hibernate.annotations.Type;
+import com.arkadiuszniemiec.dailymusic.model.music.Music;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class MediaLink {
@@ -22,6 +26,14 @@ public class MediaLink {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private String url;
-	@Enumerated(EnumType.STRING)
+	@ManyToOne
+	private Music music;
+	@OneToOne
+	@JoinColumn(name = "type_link_id", referencedColumnName = "id")
 	private TypeLink typeLink;
+	
+	public MediaLink(Music music) {
+		this.music = music;
+		this.music.getMediaLinks().add(this);
+	}
 }

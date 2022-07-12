@@ -23,4 +23,8 @@ public class MusicType {
 	private String type;
 	@ManyToMany
 	List<Music> musics;
+	
+	public void setMusic(Music music) {
+		musics.add(music);
+	}
 }
