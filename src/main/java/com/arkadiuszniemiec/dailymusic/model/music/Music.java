@@ -10,8 +10,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import com.arkadiuszniemiec.dailymusic.model.image.Image;
 import com.arkadiuszniemiec.dailymusic.model.music.description.MusicDescription;
@@ -49,6 +51,7 @@ public class Music {
 	private Set<MediaLink> mediaLinks = new HashSet<>();
 	@ManyToMany
 	private Set<MusicType> musicTypes = new HashSet<>();
+	@OneToOne(cascade = CascadeType.ALL)
 	private Image image;
 
 	public void setMusicDescription(MusicDescription musicDescription) {

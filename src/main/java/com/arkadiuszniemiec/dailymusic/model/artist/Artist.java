@@ -10,6 +10,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+import com.arkadiuszniemiec.dailymusic.model.image.Image;
 
 import lombok.Data;
 
@@ -26,4 +29,6 @@ public class Artist {
 	private Set<ArtistDescription> artistDescriptions = new HashSet<>();
 	@ManyToOne
 	private ArtistType artistType;
+	@OneToOne
+	private Image image;
 }
