@@ -46,9 +46,10 @@ public class MusicController {
 	@ResponseStatus(HttpStatus.CREATED)
 	public Music createMusic(
 			@ModelAttribute AddMusicDto musicDto) throws IOException {
+		System.out.println(musicDto);
 		Music music = modelMapper.map(musicDto, Music.class);
-		if (musicDto.getFile().getContentType().startsWith("image")) {
-			Image image = getImageFromFile(musicDto.getFile());
+		if (musicDto.getImage().getContentType().startsWith("image")) {
+			Image image = getImageFromFile(musicDto.getImage());
 			imageDAOImpl.save(image);
 			music.setImage(image);
 		}
